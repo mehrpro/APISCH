@@ -34,6 +34,7 @@ namespace APISCH
             services.ConfigIISIntegration();
             services.ConfigLoggerManager();
             services.ConfigRepository();
+            services.AddAutoMapper(typeof(Startup));
             services.AddControllers();
         }
 
@@ -58,6 +59,9 @@ namespace APISCH
 
             app.UseEndpoints(endpoints =>
             {
+                //endpoints.MapControllerRoute(
+                //    name: "default",
+                //    pattern: "{controller}/{action}/{id?}");
                 endpoints.MapControllers();
             });
         }

@@ -12,7 +12,7 @@ namespace APISCH.Entities
             RegisterTime = DateTime.Now;
             IsActive = true;
         }
-        [StringLength(45)]
+        [MaxLength(45)]
         public string TagID { get; set; }
         [Required]
         public bool ImportExportType { get; set; }

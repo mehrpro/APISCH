@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using APISCH.ConfigureEntities;
+using Microsoft.EntityFrameworkCore;
 using APISCH.Entities;
 
 namespace APISCH
@@ -9,11 +10,19 @@ namespace APISCH
         {
             optionsBuilder
             .UseSqlServer(
-                "Data Source=(local);Initial Catalog=SchoolServiceDB;user id=sa;password=sa123sa;MultipleActiveResultSets=True;");
+                "Data Source=(local);Initial Catalog=APISCHDB;user id=sa;password=sa123sa;MultipleActiveResultSets=True;");
 
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfiguration(new ImportExportConfigure());
+            modelBuilder.ApplyConfiguration(new PersonConfigure());
+        }
+
         public virtual DbSet<ImportExport> ImportExports { get; set; }
+        public virtual DbSet<Person> Persons { get; set; }
 
     }
 }

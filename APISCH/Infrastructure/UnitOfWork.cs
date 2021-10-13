@@ -1,29 +1,23 @@
 ﻿using System;
 using System.Threading.Tasks;
+using APISCH.Services.Repositories;
 using Microsoft.EntityFrameworkCore;
-using APISCH.Repositories;
 
 namespace APISCH.Infrastructure
 {
     public class UnitOfWork<TContext> : IUnitOfWork<TContext> where TContext : DbContext, new()
 
     {
-
-        #region Fileds
-
         private readonly DbContext db;
+        private ImportExportRepository _importExportRepository;
+        private PersonRepository _personRepository;
 
-        #endregion
-
-        #region Ctor
         public UnitOfWork()
         {
             db = new TContext();
         }
 
-        #endregion
 
-        #region Implement
 
         public void Commit()
         {
@@ -35,10 +29,7 @@ namespace APISCH.Infrastructure
             return db.SaveChangesAsync();
         }
 
-        #endregion
 
-        #region Repositories
-        private ImportExportRepository _importExportRepository;
         public ImportExportRepository ImportExportRepository
         {
             get
@@ -50,9 +41,20 @@ namespace APISCH.Infrastructure
                 return _importExportRepository;
             }
         }
-        #endregion
 
-        #region Dispose
+        public PersonRepository PersonRepository
+        {
+            get
+            {
+                if (_personRepository == null)
+                {
+                    _personRepository = new PersonRepository(db);
+                }
+
+                return _personRepository;
+            }
+        }
+
 
         private bool disposed = false;
         protected virtual void Dispose(bool disposing)
@@ -74,7 +76,7 @@ namespace APISCH.Infrastructure
         }
 
 
-        #endregion
+
 
     }
 }
