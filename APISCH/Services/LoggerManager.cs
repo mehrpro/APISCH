@@ -2,7 +2,7 @@
 using NLog;
 
 
-namespace APISCH.Repositories
+namespace APISCH.Services
 {
     public class LoggerManager : ILoggerManager
     {
