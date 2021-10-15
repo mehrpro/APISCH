@@ -10,7 +10,7 @@ namespace APISCH.Services.Repositories
 
     public interface ICompanyRepository : IRepository<Company>
     {
-
+        IEnumerable<Company> GetBuIds(IEnumerable<int> ids, bool trucking);
     }
 
     public class CompanyRepository : Repository<Company>, ICompanyRepository
@@ -20,5 +20,12 @@ namespace APISCH.Services.Repositories
         }
 
 
+        public IEnumerable<Company> GetBuIds(IEnumerable<int> ids, bool trucking)
+        {
+            if (trucking)
+            {
+                return GetAll().Where(x => ids.Contains(x.ID));
+
+            }
+        }
     }
-}
