@@ -19,10 +19,12 @@ namespace APISCH
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfiguration(new ImportExportConfigure());
             modelBuilder.ApplyConfiguration(new PersonConfigure());
+            modelBuilder.ApplyConfiguration(new CompanyConfigure());
         }
 
         public virtual DbSet<ImportExport> ImportExports { get; set; }
         public virtual DbSet<Person> Persons { get; set; }
+        public virtual DbSet<Company> Companies { get; set; }
 
     }
 }

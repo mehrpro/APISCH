@@ -9,7 +9,7 @@ namespace APISCH.Services.Repositories
 {
     public interface IPersonRepository : IRepository<Person>
     {
-        IList<Person> GetAllPersons();
+
     }
 
     public class PersonRepository : Repository<Person>, IPersonRepository
@@ -21,9 +21,6 @@ namespace APISCH.Services.Repositories
             this._dbContext = (this._dbContext ?? (ApplicationContext)_dbContext);
         }
 
-        public IList<Person> GetAllPersons()
-        {
-            return GetAll().ToList();
-        }
+
     }
 }

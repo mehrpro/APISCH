@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System.Security.Cryptography;
+using APISCH.Services;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace APISCH.Infrastructure
@@ -30,9 +32,13 @@ namespace APISCH.Infrastructure
 
         public static void ConfigLoggerManager(this IServiceCollection service)
         {
-            //service.AddScoped<>
+            service.AddScoped<ILoggerManager, LoggerManager>();
         }
 
-
+        public static IMvcBuilder AddCustomCsvFormatter(this IMvcBuilder builder)
+        {
+            return builder.AddMvcOptions(config => config.OutputFormatters.Add(new
+                CVSOutputForamter()));
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace APISCH.Entities
 {
@@ -22,5 +23,10 @@ namespace APISCH.Entities
         public byte Age { get; set; }
         [StringLength(10, ErrorMessage = "String Length 10 Number - No Zero Set")]
         public string PhoneNumber { get; set; }
+
+
+        public int CompanyID_FK { get; set; }
+        [ForeignKey("CompanyID_FK")]
+        public Company Company { get; set; }
     }
 }

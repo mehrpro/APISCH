@@ -10,6 +10,7 @@ namespace APISCH.Infrastructure
         //1-Begin TransAction  2-Commit(SaveChange) 3-RollBack
         ImportExportRepository ImportExportRepository { get; } //Read Only
         PersonRepository PersonRepository { get; }
+        CompanyRepository CompanyRep { get; }
         void Commit();
         Task<int> CommitAsync();
 

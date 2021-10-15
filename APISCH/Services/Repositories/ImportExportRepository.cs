@@ -9,7 +9,7 @@ namespace APISCH.Services.Repositories
     public interface IImportExportRepository : IRepository<ImportExport>
     {
         //------Definition Private Functions Model -------------//
-        IList<ImportExport> GetAllImportExports();
+
 
 
     }
@@ -22,11 +22,6 @@ namespace APISCH.Services.Repositories
             this._db = (this._db ?? (ApplicationContext)_db);
         }
 
-        public IList<ImportExport> GetAllImportExports()
-        {
-            var users = GetAll().ToList();
-            return users;
-        }
 
     }
 }

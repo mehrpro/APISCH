@@ -16,7 +16,16 @@ namespace APISCH.ConfigureEntities
                 IsActive = true,
                 RegisterTime = DateTime.Now,
                 TagID = "110A02EF1250"
-            });
+            },
+                new ImportExport()
+                {
+                    ID = 2,
+                    ImportExportType = false,
+                    IsActive = true,
+                    RegisterTime = DateTime.Now,
+                    TagID = "1125A0252DF123"
+
+                });
         }
     }
 }

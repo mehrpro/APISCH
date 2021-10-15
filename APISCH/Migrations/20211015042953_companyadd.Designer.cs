@@ -4,14 +4,16 @@ using APISCH;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace APISCH.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20211015042953_companyadd")]
+    partial class companyadd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,16 +42,6 @@ namespace APISCH.Migrations
                         {
                             ID = 1,
                             CompanyTitle = "Golrang"
-                        },
-                        new
-                        {
-                            ID = 2,
-                            CompanyTitle = "ZarinTaj"
-                        },
-                        new
-                        {
-                            ID = 3,
-                            CompanyTitle = "SepehrCable"
                         });
                 });
 
@@ -83,16 +75,8 @@ namespace APISCH.Migrations
                             ID = 1L,
                             ImportExportType = true,
                             IsActive = true,
-                            RegisterTime = new DateTime(2021, 10, 15, 8, 11, 9, 736, DateTimeKind.Local).AddTicks(1775),
+                            RegisterTime = new DateTime(2021, 10, 15, 7, 59, 52, 917, DateTimeKind.Local).AddTicks(8596),
                             TagID = "110A02EF1250"
-                        },
-                        new
-                        {
-                            ID = 2L,
-                            ImportExportType = false,
-                            IsActive = true,
-                            RegisterTime = new DateTime(2021, 10, 15, 8, 11, 9, 736, DateTimeKind.Local).AddTicks(2358),
-                            TagID = "1125A0252DF123"
                         });
                 });
 
@@ -136,36 +120,14 @@ namespace APISCH.Migrations
                     b.HasData(
                         new
                         {
-                            ID = "16ceaa26-6969-416b-a920-9efb5692cf13",
+                            ID = "c6dee22d-6ac3-4355-a5d4-c530c319ed31",
                             Age = (byte)35,
                             CompanyID_FK = 1,
                             FName = "Farshid",
                             IsActive = true,
                             LName = "Mohammadi",
                             PhoneNumber = "9186620474",
-                            RegisterTime = new DateTime(2021, 10, 15, 8, 11, 9, 738, DateTimeKind.Local).AddTicks(4592)
-                        },
-                        new
-                        {
-                            ID = "2341d9e5-c3f4-4e93-981e-02434d1a6377",
-                            Age = (byte)10,
-                            CompanyID_FK = 2,
-                            FName = "Sara",
-                            IsActive = true,
-                            LName = "Mohammadi",
-                            PhoneNumber = "9372515252",
-                            RegisterTime = new DateTime(2021, 10, 15, 8, 11, 9, 738, DateTimeKind.Local).AddTicks(8429)
-                        },
-                        new
-                        {
-                            ID = "dd756033-1364-4a58-9fc1-c67bf40037ea",
-                            Age = (byte)6,
-                            CompanyID_FK = 2,
-                            FName = "Sepehr",
-                            IsActive = true,
-                            LName = "Mohammadi",
-                            PhoneNumber = "9382362525",
-                            RegisterTime = new DateTime(2021, 10, 15, 8, 11, 9, 738, DateTimeKind.Local).AddTicks(8460)
+                            RegisterTime = new DateTime(2021, 10, 15, 7, 59, 52, 920, DateTimeKind.Local).AddTicks(1736)
                         });
                 });
 

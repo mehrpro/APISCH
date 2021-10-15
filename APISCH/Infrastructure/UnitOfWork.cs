@@ -11,6 +11,7 @@ namespace APISCH.Infrastructure
         private readonly DbContext db;
         private ImportExportRepository _importExportRepository;
         private PersonRepository _personRepository;
+        private CompanyRepository _companyRepository;
 
         public UnitOfWork()
         {
@@ -30,30 +31,11 @@ namespace APISCH.Infrastructure
         }
 
 
-        public ImportExportRepository ImportExportRepository
-        {
-            get
-            {
-                if (_importExportRepository == null)
-                {
-                    _importExportRepository = new ImportExportRepository(db);
-                }
-                return _importExportRepository;
-            }
-        }
+        public ImportExportRepository ImportExportRepository => _importExportRepository ?? (_importExportRepository = new ImportExportRepository(db));
 
-        public PersonRepository PersonRepository
-        {
-            get
-            {
-                if (_personRepository == null)
-                {
-                    _personRepository = new PersonRepository(db);
-                }
+        public PersonRepository PersonRepository => _personRepository ?? (_personRepository = new PersonRepository(db));
 
-                return _personRepository;
-            }
-        }
+        public CompanyRepository CompanyRep => _companyRepository ?? (_companyRepository = new CompanyRepository(db));
 
 
         private bool disposed = false;
