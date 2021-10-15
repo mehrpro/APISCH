@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using APISCH.DTO;
+using APISCH.Entities;
 using APISCH.Infrastructure;
 using AutoMapper;
 
@@ -18,7 +19,7 @@ namespace APISCH.Controllers
         private readonly ILoggerManager _logger;
         private readonly IMapper _mapper;
 
-        public CompanyController(UnitOfWork<ApplicationContext> unitOfWork, ILoggerManager logger,IMapper mapper)
+        public CompanyController(UnitOfWork<ApplicationContext> unitOfWork, ILoggerManager logger, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _logger = logger;
@@ -33,7 +34,7 @@ namespace APISCH.Controllers
             return Ok(result);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "CompanyById")]
         public IActionResult GetCompanyById(int id)
         {
             var result = _unitOfWork.CompanyRep.GetById(id);
@@ -45,6 +46,26 @@ namespace APISCH.Controllers
 
             var res = _mapper.Map<CompanyDto>(result);
             return Ok(res);
+        }
+
+
+        [HttpPost]
+        public IActionResult CreateCompany([FromBody] CompanyCreateDto model)
+        {
+            if (model == null)
+            {
+                _logger.LogError("CompanyCreateDto Model send from client is null.");
+                return BadRequest("CompanyCreateDto object is null.");
+            }
+
+
+            var newCompany = _mapper.Map<Company>(model);
+            _unitOfWork.CompanyRep.Insert(newCompany);
+            _unitOfWork.Commit();
+
+            var resultView = _mapper.Map<CompanyDto>(newCompany);
+
+            return CreatedAtRoute("CompanyById", new { id = resultView.ID }, resultView);
         }
     }
 }

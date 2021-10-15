@@ -9,7 +9,7 @@ namespace APISCH.Services.Repositories
 {
     public interface IPersonRepository : IRepository<Person>
     {
-
+        void CreatePersonForCompany(int companyId, Person model);
     }
 
     public class PersonRepository : Repository<Person>, IPersonRepository
@@ -22,5 +22,10 @@ namespace APISCH.Services.Repositories
         }
 
 
+        public void CreatePersonForCompany(int companyId, Person model)
+        {
+            model.CompanyID_FK = companyId;
+            Insert(model);
+        }
     }
 }
