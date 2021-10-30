@@ -68,23 +68,23 @@ namespace APISCH.Controllers
             return CreatedAtRoute("CompanyById", new { id = resultView.ID }, resultView);
         }
 
-        [HttpGet("collection/({ids})", Name = "CompanyCollection")]
-        public IActionResult GetCompanyCollection(IEnumerable<CompanyDto> ids)
-        {
-            if (ids == null)
-            {
-                _logger.LogError("CompanyCollection object send from client is null.");
-                return BadRequest("Collection object is null.")
-            }
+        //[HttpGet("collection/({ids})", Name = "CompanyCollection")]
+        //public IActionResult GetCompanyCollection(IEnumerable<CompanyDto> ids)
+        //{
+        //    if (ids == null)
+        //    {
+        //        _logger.LogError("CompanyCollection object send from client is null.");
+        //        return BadRequest("Collection object is null.")
+        //    }
 
-            var resultCount = _unitOfWork.CompanyRep.getma
+        //    var resultCount = _unitOfWork.CompanyRep.getma
 
-            if ()
-            {
+        //    if ()
+        //    {
 
 
-            }
-        }
+        //    }
+        //}
 
         [HttpPost("collection")]
         public IActionResult CreateCollectionCompany([FromBody] IEnumerable<CompanyCreateDto> models)

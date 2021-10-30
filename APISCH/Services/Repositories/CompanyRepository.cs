@@ -27,5 +27,8 @@ namespace APISCH.Services.Repositories
                 return GetAll().Where(x => ids.Contains(x.ID));
 
             }
+
+            return GetAll().Where(x => ids.Contains(x.ID));
         }
     }
+}
